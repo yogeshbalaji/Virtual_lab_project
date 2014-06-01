@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    
+    <head>
+        <title>BREADBOARD1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>Creating the image of a breadboard</div>
+        
+        <canvas id="myCanvas" width="1200" height="2000"></canvas>
+    <script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      
+      //var context2 = canvas.getContext('2d');
+      
+      //<!-- Breadboard parameters -->
+      var bread_board_x = 100;
+      var bread_board_y =100;
+      var bread_board_width = 700;
+      var bread_board_height = 350;
+      
+      //<!-- Breadboard layout -->
+      context.beginPath();
+      context.rect(bread_board_x, bread_board_y, bread_board_width, bread_board_height);
+      context.fillStyle = 'white';
+      context.fill();
+      context.lineWidth = 5;
+      context.strokeStyle = 'black';
+      context.stroke();
+      
+      //<!-- Breadboard boundary -->
+            
+      context.rect(bread_board_x-50,bread_board_y-50,bread_board_width+100,bread_board_height+100);
+      context.lineWidth = 2;
+      context.strokeStyle = 'black';
+      context.stroke();
+      context.closePath();
+      //<!-- Breadboard lines and slots -->
+      
+      context.beginPath();
+      context.moveTo(bread_board_x,bread_board_y+bread_board_height/6);
+      context.lineTo(bread_board_x+bread_board_width,bread_board_y+bread_board_height/6);
+            
+      context.moveTo(bread_board_x,bread_board_y+bread_board_height/2);
+      context.lineTo(bread_board_x+bread_board_width,bread_board_y+bread_board_height/2);
+            
+      context.moveTo(bread_board_x,bread_board_y+(5*bread_board_height)/6);
+      context.lineTo(bread_board_x+bread_board_width,bread_board_y+(5*bread_board_height)/6);
+      context.strokeStyle = 'gray';
+      
+      context.stroke();
+      context.closePath();
+      var number_of_rows = 64;
+      var number_blocks = 10;
+      var number_per_block = 5;
+      var dist_between_slots = 10;
+      var block_dist = 10;
+      var offset1 = (bread_board_width-63*dist_between_slots)/2;     //offset for inner layer
+      var offset2 = (bread_board_width-((number_blocks-1)*block_dist + number_blocks*(number_per_block-1)*dist_between_slots))/2;
+      //Outer layer 1
+      context.beginPath();
+      for(var i=0;i<64;i++)
+      {
+         context.beginPath();
+         context.arc(bread_board_x+offset1+dist_between_slots*i,bread_board_y+dist_between_slots,2, 0, 2 * Math.PI, false);
+         context.fillStyle = 'black';
+         context.fill();
+         
+         context.beginPath();
+         context.arc(bread_board_x+offset1+dist_between_slots*i,bread_board_y+2*dist_between_slots,2, 0, 2 * Math.PI, false);
+         context.fillStyle = 'black';
+         context.fill();
+      }
+      //context.beginPath();
+      //context.arc(10, 10, 2, 0, 2 * Math.PI, false);
+      context.fillStyle = 'black';
+      context.fill();
+      
+      
+    </script>
+    </body>
+</html>
