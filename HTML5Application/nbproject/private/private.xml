@@ -3,11 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/home/sabyashiv/projects/virtual_lab/Virtual_lab_project/HTML5Application/public_html/drop.js</file>
             <file>file:/home/sabyashiv/projects/virtual_lab/Virtual_lab_project/HTML5Application/public_html/index.html</file>
             <file>file:/home/sabyashiv/projects/virtual_lab/Virtual_lab_project/HTML5Application/public_html/breadboard_creation_events.js</file>
             <file>file:/home/sabyashiv/projects/virtual_lab/Virtual_lab_project/HTML5Application/public_html/design.css</file>
             <file>file:/home/sabyashiv/projects/virtual_lab/Virtual_lab_project/HTML5Application/public_html/ic_generate.js</file>
+=======
+            <file>file:/home/yogesh/netbeans/HTML5Application/public_html/breadboard_creation_events.js</file>
+            <file>file:/home/yogesh/netbeans/HTML5Application/public_html/index.html</file>
+>>>>>>> 8d5bdb14f6107767e23fe871012e5199b3ce7aaa
         </group>
     </open-files>
 </project-private>
