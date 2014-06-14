@@ -114,9 +114,11 @@
       context.fillStyle = 'black';
       context.fill();
       
+      
       function closestPoint(canvas,point)
       {
           //deciding height
+          var outx,outy;
           var closer_index_rows,closer_index_cols;
           closer_index_rows = 1;
           var temp_b,block_no;
@@ -165,7 +167,8 @@
               
                   var message = 'Mouse position: ' + point.x + ',' + point.y;
                   writeMessage(canvas, message);
-              
+                  outx=point.x;
+                  outy=point.y;
           }
           
           
@@ -210,6 +213,8 @@
               
               var message = 'Mouse position: ' + closer_index_rows + ',' + point.y;
               writeMessage(canvas, message);
+              outx=closer_index_rows;
+              outy=point.y;
           }
           
           else if((point.y > bread_board_y+bread_board_height/6)&&(point.y < (bread_board_y+5*bread_board_height/6)))
@@ -246,10 +251,12 @@
               
               var message = 'Mouse position: ' + closer_index_rows + ',' + point.y;
               writeMessage(canvas, message);
-              
+              outx=closer_index_rows;
+              outy=point.y;
               
           }
           
+          return [outx,outy];
       }
       function writeMessage(canvas, message) {
         var context = canvas.getContext('2d');
@@ -260,6 +267,8 @@
       }
       
       function getMousePos(canvas, evt) {
+          if (typeof ic_select == 'undefined')
+              ic_select=0;
         var rect = canvas.getBoundingClientRect();
         
                   
@@ -270,7 +279,15 @@
       }
       canvas.addEventListener('mousedown', function(evt) {
         var mousePos = getMousePos(canvas, evt);
-        closestPoint(canvas,mousePos);
+        var pt=closestPoint(canvas,mousePos);
+        if (ic_select==1)
+        {
+            
+            ptselx[ptselx.length]=pt[0];
+            ptsely[ptsely.length]=pt[1];
+            
+            select_ic('ic',ic_no);
+        }
         
         //var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
         //writeMessage(canvas, message);

@@ -19,11 +19,11 @@ and open the template in the editor.
         <div align="center">
     <dl class="dropdown">
   <dt id="ic-header" onmouseover="ddMenu('ic',1)" onmouseout="ddMenu('ic',-1)" >Select IC's</dt>
-  <dd id="ic-content" onmouseover="cancelHide('ic')" onmouseout="ddMenu('ic',-1)" onmousedown="select_ic('ic')">
+  <dd id="ic-content" onmouseover="cancelHide('ic')" onmouseout="ddMenu('ic',-1)" >
     <ul id="ic_list1">
-      <li><a href="http://www.google.com" class="separator">7447</a></li>
-      <li><a href="#" class="separator">7485</a></li>
-      <li><a href="#" class="separator">7483</a></li>
+        <li onmousedown="select_ic('ic',7447)">7447<br></li>
+        <li onmousedown="select_ic('ic',7485)">7485<br></li>
+        <li onmousedown="select_ic('ic',7483)">7483<br></li>
       
     </ul>
   </dd>
@@ -33,7 +33,7 @@ and open the template in the editor.
         
 
         <canvas id="myCanvas" width="1200" height="2000"></canvas>
-        <canvas id="ic_canvas"></canvas>
+        
 
         <script src =" breadboard_creation_events.js"></script>
     </body>
