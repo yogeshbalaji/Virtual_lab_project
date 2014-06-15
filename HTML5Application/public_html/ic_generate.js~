@@ -81,7 +81,7 @@ function ic_fit_to_slot()
     ic_display_pin_info();
     elems.push({id:no_of_elements+1,type:'ic',start:point1.x-pin_width_left,end:bread_board_y+bread_board_height/2-offset1-pin_height_top-height_between_slots,no:ic_no1,height:ic_current_display_height,width:ic_current_display_width});
     no_of_elements=no_of_elements+1;
-       ic_select_ind=0; 
+
 }
 function check(point_x,point_y)
 {

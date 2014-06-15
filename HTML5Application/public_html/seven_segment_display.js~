@@ -141,7 +141,7 @@ function sev_fit_to_slot()
     display_pin_info();
     elems.push({id:no_of_elements+1,type:'7seg',start:point1.x-pin_width_left,end:bread_board_y+bread_board_height/2-offset1-pin_height_top-height_between_slots,no:0,height:sev_current_display_height,width:sev_current_display_width});
     no_of_elements=no_of_elements+1;
-    seven_select_ind=0;
+
 }
 function check(point_x,point_y)
 {

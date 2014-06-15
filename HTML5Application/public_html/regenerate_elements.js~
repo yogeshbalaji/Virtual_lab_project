@@ -16,9 +16,9 @@ function elements(id,type,start,end)
 function regen()
 {
 
-   for (var i=0;i<no_of_elements;i++)
+   for (i=0;i<no_of_elements;i++)
       {
-
+              
           if (elems[i].type=='7seg')
           {
             context.beginPath();

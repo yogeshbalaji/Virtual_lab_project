@@ -8,6 +8,7 @@
       var context = canvas.getContext('2d');
       canvas.width = window.innerWidth;
       canvas.height = canvas.width/2;
+      var no_of_elements=0;
       //var context2 = canvas.getContext('2d');
       //$(document).width();
       //$(document).height();
@@ -132,7 +133,8 @@
       //context.arc(10, 10, 2, 0, 2 * Math.PI, false);
       context.fillStyle = 'black';
       context.fill();
-  }
+    regen();
+          }
 
       
 
