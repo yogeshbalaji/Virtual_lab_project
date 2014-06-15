@@ -75,9 +75,11 @@
       
       context.stroke();
       context.closePath();
+
       
     //Outer layer 1
       context.beginPath();
+
           
           
           
@@ -131,6 +133,7 @@
       context.fillStyle = 'black';
       context.fill();
   }
+
       
 
       
@@ -306,6 +309,8 @@
 
       draw_pins();
 
+
+      
       
     
      

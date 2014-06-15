@@ -7,8 +7,13 @@
 var clicked_flag=0;
 var seven_selected =0;
 var initial_seven;
+
 var ic_select_ind = 0;
 var seven_select_ind = 0;
+
+
+
+display_7segment(bread_board_x,bread_board_y);
 
 function closestPoint(canvas,point)
       {
@@ -209,10 +214,14 @@ function writeMessage(canvas, message) {
               var inc_x = mousePos.x-initial_seven.x;
               var inc_y = mousePos.y-initial_seven.y;
               draw_pins();
+
               if (seven_select_ind==1)
               display_7segment(current_display_x+inc_x,current_display_y+inc_y);
               else if (ic_select_ind==1)
               display_ic(current_display_x+inc_x,current_display_y+inc_y);    
+
+              display_7segment(current_display_x+inc_x,current_display_y+inc_y);
+
               initial_seven.x = initial_seven.x+inc_x;
               initial_seven.y = initial_seven.y+inc_y;
           }
@@ -226,10 +235,12 @@ function writeMessage(canvas, message) {
       canvas.addEventListener('mouseup', function(evt) {
         clicked_flag=0;
         seven_selected=0;
+
         if (seven_select_ind==1)
         sev_fit_to_slot();
         if (ic_select_ind==1)
             ic_fit_to_slot();
+
          // var mousePos = getMousePos(canvas, evt);
         //closestPoint(canvas,mousePos);
         
