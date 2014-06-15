@@ -11,8 +11,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="design.css" type="text/css" />
-        <script type="text/javascript" src="drop.js"></script>
-        <script type="text/javascript" src="ic_generate.js"></script>
+        
     </head>
     <body>
         <div align="center"><h1>Please use the breadboard below</h1></div>
@@ -21,10 +20,10 @@ and open the template in the editor.
   <dt id="ic-header" onmouseover="ddMenu('ic',1)" onmouseout="ddMenu('ic',-1)" >Select IC's</dt>
   <dd id="ic-content" onmouseover="cancelHide('ic')" onmouseout="ddMenu('ic',-1)" >
     <ul id="ic_list1">
-        <li onmousedown="select_ic('ic',7447)">7447<br></li>
-        <li onmousedown="select_ic('ic',7485)">7485<br></li>
-        <li onmousedown="select_ic('ic',7483)">7483<br></li>
-      
+        <li onmousedown="display_ic(bread_board_x,bread_board_y,7447)">7447<br></li>
+        <li onmousedown="display_ic(bread_board_x,bread_board_y,7485)">7485<br></li>
+        <li onmousedown="display_ic(bread_board_x,bread_board_y,7483)">7483<br></li>
+        <li onmousedown="display_7segment(bread_board_x,bread_board_y)">7 Segment Display<br></li>
     </ul>
   </dd>
 </dl>
@@ -36,5 +35,13 @@ and open the template in the editor.
         
 
         <script src =" breadboard_creation_events.js"></script>
+        <script type="text/javascript" src="drop.js"></script>
+        <script type="text/javascript" src="ic_generate.js"></script>
+        <script src =" seven_segment_display.js"></script> 
+        <script src =" mouse_events.js"></script>
+        <select name = "menu1" >
+            <option value =" one" >One</option>
+            <option value =" two">Two</option>
+        </select>
     </body>
 </html>
