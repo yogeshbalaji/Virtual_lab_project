@@ -7,9 +7,12 @@
 var clicked_flag=0;
 var seven_selected =0;
 var initial_seven;
-
+var cli=-1;
 var ic_select_ind = 0;
 var seven_select_ind = 0;
+
+//var current_display_x =bread_board_x;
+//var current_display_y =bread_board_y;
 
 function closestPoint(canvas,point)
       {
@@ -186,41 +189,69 @@ function writeMessage(canvas, message) {
           y: evt.clientY - rect.top
         };
       }
+      function check_element(point_x,point_y)
+    {
+        var got=0;
+           for (var i=0;i<no_of_elements;i++)
+      {
+    if(((point_x>elems[i].start)&&(point_x<elems[i].start + elems[i].width))&&((point_y>elems[i].end)&&(point_y<elems[i].end + elems[i].height)))
+    {
+        return i;
+        got=1;    
+    
+    }
+      }
+    if (got===0)
+        return  -1;
+    }
       canvas.addEventListener('mousedown', function(evt) 
       {
+          
+          
           clicked_flag=1;
+            
           
         var mousePos = getMousePos(canvas, evt);
-        if(check(mousePos.x,mousePos.y)===1)
+        cli=check_element(mousePos.x,mousePos.y);
+        writeMessage(canvas,cli);
+        /*
+        if(cli!==-1)
         {
+        
+            
             seven_selected = 1;
+            //seven_select_ind=1;
             initial_seven = mousePos;
         }
-          if(check(mousePos.x,mousePos.y)===2)
+          if(sev_check(mousePos.x,mousePos.y)===2)
         closestPoint(canvas,mousePos);
         
         //var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
         //writeMessage(canvas, message);
+        */
       }, false);
       
       canvas.addEventListener('mousemove', function(evt) {
         
-          if(seven_selected===1)
+          if(cli!==-1)
           {
               var mousePos = getMousePos(canvas, evt);
-              var inc_x = mousePos.x-initial_seven.x;
-              var inc_y = mousePos.y-initial_seven.y;
+              var inc_x = mousePos.x-elems[cli].start;
+              var inc_y = mousePos.y-elems[cli].end;
               draw_pins();
 
-              if (seven_select_ind==1)
-              display_7segment(current_display_x+inc_x,current_display_y+inc_y);
-              else if (ic_select_ind==1)
-              display_ic(current_display_x+inc_x,current_display_y+inc_y,ic_no1);    
-
-
-
-              initial_seven.x = initial_seven.x+inc_x;
-              initial_seven.y = initial_seven.y+inc_y;
+              if (elems[cli].type==='7seg')
+              {
+              display_7segment(elems[cli].start+inc_x,elems[cli].end+inc_y);
+              
+                }
+              else if (elems[cli].type==='ic')
+              {
+              display_ic(elems[cli].start+inc_x,elems[cli].end+inc_y,ic_no1);
+              
+              }
+              elems[cli].start = elems[cli].start+inc_x;
+              elems[cli].end = elems[cli].end+inc_y;
           }
           var mousePos = getMousePos(canvas, evt);
         //closestPoint(canvas,mousePos);
@@ -231,13 +262,15 @@ function writeMessage(canvas, message) {
       
       canvas.addEventListener('mouseup', function(evt) {
         clicked_flag=0;
-        seven_selected=0;
-
-        if (seven_select_ind==1)
+        
+        if (cli!==-1)
+        {
+        if (elems[cli].type==='7seg')
         sev_fit_to_slot();
-        if (ic_select_ind==1)
+        if (elems[cli].type==='ic')
             ic_fit_to_slot();
-
+        cli=-1;
+    }
          // var mousePos = getMousePos(canvas, evt);
         //closestPoint(canvas,mousePos);
         

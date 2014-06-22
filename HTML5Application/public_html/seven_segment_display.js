@@ -6,8 +6,7 @@
 
 
 
-var current_display_x ;
-var current_display_y ;
+
 var sev_current_display_width = dist_between_slots*5;
 var sev_current_display_height = height_between_slots*3.5+offset1*2;
 
@@ -75,12 +74,17 @@ function set_led_parameters(trigger)
     context.closePath();
 }
 
-
-
+function initialise_7segment(display_x,display_y)
+{
+    elems.push({id:no_of_elements+1,type:'7seg',start:display_x,end:display_y,no:0,height:sev_current_display_height,width:sev_current_display_width});
+    no_of_elements=no_of_elements+1;
+    display_7segment(display_x,display_y);
+    
+    }
 
 function display_7segment(display_x,display_y)
 {
-    seven_select_ind=1;
+    
     current_display_x = display_x;
     current_display_y = display_y;
     
@@ -98,25 +102,21 @@ function display_7segment(display_x,display_y)
     var trigger = [1,1,0,1,1,0,1];
     set_led_parameters(trigger);
     
-   
-    
-
-    
 }
 
-function display_pin_info()
+function sev_display_pin_info(display_x,display_y)
 {
     
     for(var i=0;i<5;i++)
     {
         context.beginPath();
-        context.arc(current_display_x+pin_width_left+dist_between_slots*i,current_display_y+pin_height_top,2, 0, 2 * Math.PI, false);
-        context.fillStyle = 'blue';
+        context.arc(display_x+pin_width_left+dist_between_slots*i,display_y,2, 0, 2 * Math.PI, false);
+        context.fillStyle = '#333333';
         context.fill();
         
         context.beginPath();
-        context.arc(current_display_x+pin_width_left+dist_between_slots*i,current_display_y+pin_height_bottom,2, 0, 2 * Math.PI, false);
-        context.fillStyle = 'blue';
+        context.arc(display_x+pin_width_left+dist_between_slots*i,display_y+sev_current_display_height,2, 0, 2 * Math.PI, false);
+        context.fillStyle = '#333333';
         context.fill();
     }
     
@@ -126,7 +126,7 @@ function display_pin_info()
 function sev_fit_to_slot()
 {
     var point;
-    point = {x: current_display_x+pin_width_left,y: bread_board_y+bread_board_height/2-offset1-pin_height_top-height_between_slots };
+    point = {x: current_display_x+pin_width_left,y: bread_board_y+bread_board_height/2-offset1-pin_height_top-2*height_between_slots };
     
     //check if the drag goes out of bound
     
@@ -136,14 +136,18 @@ function sev_fit_to_slot()
         point.x = bread_board_x+bread_board_width-sev_current_display_width-offset2;
     point1 = closestPoint(canvas,point);
     
+    
+    if (cli!==-1)
+    {
+    elems[cli].start=point1.x-pin_width_left;
+    elems[cli].end=bread_board_y+bread_board_height/2-offset1-height_between_slots;
+    }
     draw_pins();
-    display_7segment(point1.x-pin_width_left,bread_board_y+bread_board_height/2-offset1-pin_height_top-height_between_slots);
-    display_pin_info();
-    elems.push({id:no_of_elements+1,type:'7seg',start:point1.x-pin_width_left,end:bread_board_y+bread_board_height/2-offset1-pin_height_top-height_between_slots,no:0,height:sev_current_display_height,width:sev_current_display_width});
-    no_of_elements=no_of_elements+1;
-    seven_select_ind=0;
+    //display_7segment(point1.x-pin_width_left,bread_board_y+bread_board_height/2-offset1-height_between_slots);
+    //sev_display_pin_info(point1.x-pin_width_left,bread_board_y+bread_board_height/2-offset1-height_between_slots);
+    //sev_select_ind=0;
 }
-function check(point_x,point_y)
+function sev_check(point_x,point_y)
 {
     if(((point_x>current_display_x)&&(point_x<current_display_x + sev_current_display_width))&&((point_y>current_display_y)&&(point_y<current_display_y + sev_current_display_height)))
         return 1;
