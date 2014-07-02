@@ -213,6 +213,9 @@ function writeMessage(canvas, message) {
           
         var mousePos = getMousePos(canvas, evt);
         cli=check_element(mousePos.x,mousePos.y);
+        
+        elems[cli].start=mousePos.x;
+        elems[cli].end = mousePos.y;
         writeMessage(canvas,cli);
         /*
         if(cli!==-1)
@@ -244,6 +247,7 @@ function writeMessage(canvas, message) {
               {
               display_7segment(elems[cli].start+inc_x,elems[cli].end+inc_y);
               
+              
                 }
               else if (elems[cli].type==='ic')
               {
@@ -269,6 +273,8 @@ function writeMessage(canvas, message) {
         sev_fit_to_slot();
         if (elems[cli].type==='ic')
             ic_fit_to_slot();
+        if (elems[cli].type==='resistor')
+            resistor_fit_to_slot();
         cli=-1;
     }
          // var mousePos = getMousePos(canvas, evt);
