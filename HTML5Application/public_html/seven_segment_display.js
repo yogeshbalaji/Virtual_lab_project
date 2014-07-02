@@ -136,11 +136,20 @@ function sev_fit_to_slot()
         point.x = bread_board_x+bread_board_width-sev_current_display_width-offset2;
     point1 = closestPoint(canvas,point);
     
+   if (cli!==-1)
+    {
+        if (check_overlap(point1.x,point1.y)===1)
+        {
+                elems[cli].start=bread_board_x;
+    elems[cli].end=bread_board_y;
     
-    if (cli!==-1)
+    }
+    else
     {
     elems[cli].start=point1.x-pin_width_left;
     elems[cli].end=bread_board_y+bread_board_height/2-offset1-height_between_slots;
+    }
+    
     }
     draw_pins();
     //display_7segment(point1.x-pin_width_left,bread_board_y+bread_board_height/2-offset1-height_between_slots);

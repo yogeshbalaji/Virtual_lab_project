@@ -96,10 +96,21 @@ function ic_fit_to_slot()
     
     //display_ic(point1.x-pin_width_left,bread_board_y+bread_board_height/2-offset1,ic_no1);
     //ic_display_pin_info(point1.x-pin_width_left,bread_board_y+bread_board_height/2-offset1,ic_no1);
+    
     if (cli!==-1)
+    {
+        if (check_overlap(point1.x,point1.y)===1)
+        {
+                elems[cli].start=bread_board_x;
+    elems[cli].end=bread_board_y;
+    
+    }
+    else
     {
     elems[cli].start=point1.x-pin_width_left;
     elems[cli].end=bread_board_y+bread_board_height/2-offset1;
+    }
+    
     }
     draw_pins();
 //    elems.push({id:no_of_elements+1,type:'ic',start:current_display_x,end:current_display_y,height:ic_current_display_height,width:ic_current_display_width,ic_no:ic_no1});

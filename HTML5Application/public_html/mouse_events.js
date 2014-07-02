@@ -13,6 +13,24 @@ var seven_select_ind = 0;
 
 //var current_display_x =bread_board_x;
 //var current_display_y =bread_board_y;
+function check_overlap(x,y)
+{
+    var detect=0;
+    
+      for (var i=0;i<no_of_elements;i++)
+      {
+          if  (cli===i)
+              break;
+          
+            if((Math.abs(x-elems[i].start)<elems[cli].width) &&(Math.abs(y-elems[i].end)<elems[cli].height))
+            detect=1;
+               
+      }
+      writeMessage(canvas,detect);
+    
+      return detect;
+    
+    }
 
 function closestPoint(canvas,point)
       {
