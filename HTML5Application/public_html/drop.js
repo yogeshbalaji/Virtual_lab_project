@@ -1,7 +1,35 @@
 var DDSPEED = 10;
 var DDTIMER = 15;
-
-
+var clicked_submenu=0;
+function sub_menu_open(id)
+{
+    var el=document.getElementById(id);
+    el.style.display="block"; 
+}
+function sub_menu_hold(id)
+{
+    writeMessage(canvas,clicked_submenu);
+    var el=document.getElementById(id);
+    if (clicked_submenu===0)
+    {
+    el.style.visibility="visible"; 
+    clicked_submenu=1;
+    }
+    else if (clicked_submenu===1)
+    {
+    el.style.visibility="hidden"; 
+    clicked_submenu=0;
+    }
+    
+}
+function sub_menu_close(id)
+{
+    
+    var el=document.getElementById(id);
+    if (clicked_submenu===0)
+    el.style.visibility="hidden"; 
+    
+}
 
 // main function to handle the mouse events //
 function ddMenu(id,d,id1)
@@ -54,7 +82,7 @@ function cancelHide(id){
 function ddSlide(c,d){
   var currh = c.offsetHeight;
   var dist;
-  if(d == 1){
+  if(d === 1){
     dist = (Math.round((c.maxh - currh) / DDSPEED));
   }else{
     dist = (Math.round(currh / DDSPEED));

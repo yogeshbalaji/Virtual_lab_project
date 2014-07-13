@@ -26,16 +26,30 @@ and open the template in the editor.
         <li onmousedown="initialise_ic(bread_board_x,bread_board_y,7485)">7485<br></li>
         <li onmousedown="initialise_ic(bread_board_x,bread_board_y,7483)">7483<br></li>
         <li onmousedown="initialise_7segment(bread_board_x,bread_board_y)">7 Segment Display<br></li>
-        <li id="wire" onmouseover="initialise_wire('col_sel_db','wire');ddMenu('col_sel',1,'wire')" onmouseout="ddMenu('col_sel',-1,'wire')">Wire<br></li>
-        
+        <li id="wire" onmouseover="sub_menu_open('col_sel_db')" onmousedown="sub_menu_hold('col_sel_db')" onmouseout="sub_menu_close('col_sel_db')">
+            Wire<br>
+            <div id="col_sel_db" align="center">    
+                  <dl class="dropdown_elements">
+                    <dt id="wire-header" onmouseover="ddMenu('wire',1,'wire-header')" onmouseout="ddMenu('wire',-1,'wire-header')" >Select Wire Colour</dt>
+                        <dd id="wire-content" onmouseover="cancelHide('wire')" onmouseout="ddMenu('wire',-1,'wire-header')" >
+                  <ul id="wire_col_sel">
+                    <li onmousedown="initialise_wire('#ff0000')">Red<br></li>
+                    
+                  </ul>
+                       </dd>
+                </dl>
+            </div>
+        </li>
+        <li onmousedown="initialise_resistor(bread_board_x,bread_board_y)">Resistor<br></li>
     </ul>
   </dd>
 </dl>
         </div>
-        <div align="center" style="visibility:hidden" id="col_sel_db">
+        <!--
+        <div align="center" >
             
             
-                <dl class="colour_wire">
+                <dl class="colour_wire" >
   <dt id="col_sel-header" onmouseover="ddMenu('col_sel',1,'wire')" onmouseout="ddMenu('col_sel',-1,'wire')" ></dt>
   <dd id="col_sel-content" onmouseover="cancelHide('col_sel')" onmouseout="ddMenu('col_sel',-1,'wire')" >
     <ul id="wire_col_sel">
@@ -46,7 +60,7 @@ and open the template in the editor.
 </dl>
             
         </div>
-        
+        -->
         
 
         <canvas id="myCanvas" width="1200" height="2000"></canvas>
@@ -56,6 +70,7 @@ and open the template in the editor.
         <script src =" wire_select.js"></script>
         <script type="text/javascript" src="drop.js"></script>
         <script type="text/javascript" src="ic_generate.js"></script>
+        <script type="text/javascript" src="resistor.js"></script>
         <script src =" seven_segment_display.js"></script> 
         <script src =" mouse_events.js"></script>
 

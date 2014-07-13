@@ -230,8 +230,25 @@ function writeMessage(canvas, message) {
             
           
         var mousePos = getMousePos(canvas, evt);
+        if (wire_sel===1)
+        {       writeMessage(canvas,'hererear');         
+              wr_pt1=mousePos;
+              wire_sel=2;
+          }
+        if (wire_sel===2)
+        {
+            writeMessage(canvas,'here12');
+              wr_pt2=mousePos;          
+              wire_sel=0;
+              display_wire();
+        }
         cli=check_element(mousePos.x,mousePos.y);
+        if(cli!==-1)
+        {
+        elems[cli].start=mousePos.x;
+        elems[cli].end = mousePos.y;
         writeMessage(canvas,cli);
+        }
         /*
         if(cli!==-1)
         {
@@ -250,7 +267,7 @@ function writeMessage(canvas, message) {
       }, false);
       
       canvas.addEventListener('mousemove', function(evt) {
-        
+          writeMessage(canvas,'Here also'+wire_sel)
           if(cli!==-1)
           {
               var mousePos = getMousePos(canvas, evt);
@@ -262,12 +279,18 @@ function writeMessage(canvas, message) {
               {
               display_7segment(elems[cli].start+inc_x,elems[cli].end+inc_y);
               
+              
                 }
               else if (elems[cli].type==='ic')
               {
               display_ic(elems[cli].start+inc_x,elems[cli].end+inc_y,ic_no1);
               
               }
+              else if (elems[cli].type==='resistor')
+              {
+              display_resistor(elems[cli].start+inc_x,elems[cli].end+inc_y,ic_no1);
+              
+              }              
               elems[cli].start = elems[cli].start+inc_x;
               elems[cli].end = elems[cli].end+inc_y;
           }
@@ -287,6 +310,8 @@ function writeMessage(canvas, message) {
         sev_fit_to_slot();
         if (elems[cli].type==='ic')
             ic_fit_to_slot();
+        if (elems[cli].type==='resistor')
+            resistor_fit_to_slot();
         cli=-1;
     }
          // var mousePos = getMousePos(canvas, evt);

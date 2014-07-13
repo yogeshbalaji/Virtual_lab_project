@@ -17,18 +17,27 @@ function regen()
 {
 
    for (var i=0;i<no_of_elements;i++)
-      {
+    {
 
-          if (elems[i].type=='7seg')
-          {
+        if (elems[i].type==='7seg')
+        {
               
-              display_7segment(elems[i].start,elems[i].end);
-              sev_display_pin_info(elems[i].start,elems[i].end);
-          }
-                    if (elems[i].type=='ic')
-          {
-                    display_ic(elems[i].start,elems[i].end,elems[i].ic_no);
-                    ic_display_pin_info(elems[i].start,elems[i].end);
+            display_7segment(elems[i].start,elems[i].end);
+            sev_display_pin_info(elems[i].start,elems[i].end);
+        }
+          
+        if (elems[i].type==='ic')
+        {
+            display_ic(elems[i].start,elems[i].end,elems[i].ic_no);
+            ic_display_pin_info(elems[i].start,elems[i].end);
+        }
+        
+        if(elems[i].type === 'resistor')
+        {
+            display_resistor(elems[i].start,elems[i].end);
+            
+        }
+        
 	/*	    
 		    var display_x=elems[i].start;
 		    var display_y=elems[i].end;
@@ -69,6 +78,6 @@ function regen()
 */
 
 
-          }
-          }
-      }   
+        
+    }
+}   
