@@ -19,12 +19,25 @@ and open the template in the editor.
         <div align="center"><h1>Please use the breadboard below</h1></div>
         <div align="center">
     <dl class="dropdown_elements">
-  <dt id="ic-header" onmouseover="ddMenu('ic',1,'ic-header')" onmouseout="ddMenu('ic',-1,'ic-header')" >Select IC's</dt>
-  <dd id="ic-content" onmouseover="cancelHide('ic')" onmouseout="ddMenu('ic',-1,'ic-header')" >
-    <ul id="ic_list1">
-        <li onmousedown="initialise_ic(bread_board_x,bread_board_y,7447)">7447<br></li>
-        <li onmousedown="initialise_ic(bread_board_x,bread_board_y,7485)">7485<br></li>
-        <li onmousedown="initialise_ic(bread_board_x,bread_board_y,7483)">7483<br></li>
+  <dt id="elem-header" onmouseover="ddMenu('elem',1,'elem-header')" onmouseout="ddMenu('elem',-1,'elem-header')" >Select IC's</dt>
+  <dd id="elem-content" onmouseover="cancelHide('elem')" onmouseout="ddMenu('elem',-1,'elem-header')" >
+    <ul id="elem_list1">
+        <li id="ic" onmouseover="sub_menu_open('ic_sel_db')" onmousedown="sub_menu_hold('ic_sel_db')" onmouseout="sub_menu_close('ic_sel_db')">
+         IC's<br>
+            <div id="ic_sel_db" align="center">    
+                  <dl class="dropdown_elements">
+                    <dt id="ic-header" onmouseover="ddMenu('ic',1,'ic-header')" onmouseout="ddMenu('ic',-1,'ic-header')" >Select IC Number</dt>
+                        <dd id="ic-content" onmouseover="cancelHide('ic')" onmouseout="ddMenu('ic',-1,'ic-header')" >
+                  <ul id="ic_sel">
+                    <li onmousedown="initialise_ic(bread_board_x,bread_board_y,7447)">7447<br></li>
+                    <li onmousedown="initialise_ic(bread_board_x,bread_board_y,7485)">7485<br></li>
+                    <li onmousedown="initialise_ic(bread_board_x,bread_board_y,7483)">7483<br></li>
+                  </ul>
+                       </dd>
+                </dl>
+            </div>
+        </li>
+        
         <li onmousedown="initialise_7segment(bread_board_x,bread_board_y)">7 Segment Display<br></li>
         <li id="wire" onmouseover="sub_menu_open('col_sel_db')" onmousedown="sub_menu_hold('col_sel_db')" onmouseout="sub_menu_close('col_sel_db')">
             Wire<br>
@@ -42,7 +55,7 @@ and open the template in the editor.
             </div>
         </li>
         <li onmousedown="initialise_resistor(bread_board_x,bread_board_y)">Resistor<br></li>
-        <li onmousedown="initialise_short('#CC0000')">Short wire<br></li>
+        <li onmousedown="remove_elem_init()"><font color="red">REMOVE ELEMENT<br></font></li>
     </ul>
   </dd>
 </dl>
@@ -69,20 +82,13 @@ and open the template in the editor.
         
         <script src =" regenerate_elements.js"></script>
         <script src =" breadboard_creation_events.js"></script>
-        <script src =" wire_select.js"></script>
         <script type="text/javascript" src="drop.js"></script>
         <script type="text/javascript" src="ic_generate.js"></script>
         <script type="text/javascript" src="resistor.js"></script>
         <script src =" seven_segment_display.js"></script> 
         <script src =" mouse_events.js"></script>
-<<<<<<< HEAD
-
-=======
         <script src =" short_wire.js"></script>
-        
->>>>>>> 3a612561a238f45befc56dbab16b03a24ec9b4ec
-
-
+        <script src =" remove_elem.js"></script>
         <select name = "menu1" >
             <option value =" one" >One</option>
             <option value =" two">Two</option>

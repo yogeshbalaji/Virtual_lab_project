@@ -25,7 +25,7 @@ function initialise_short(col)
 
 function display_short(ind)
 {
-    writeMessage(canvas,'here i am toooooo'+elems[ind].wire_col);
+    
     wire_pt1_x = elems[ind].start;
     wire_pt1_y = elems[ind].end;
     wire_pt2_x = elems[ind].width;

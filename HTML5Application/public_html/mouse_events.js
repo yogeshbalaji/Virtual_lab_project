@@ -11,7 +11,7 @@ var cli=-1;
 var ic_select_ind = 0;
 var seven_select_ind = 0;
 var short_flag = 0;
-
+var remove_elem=0;
 
 //var current_display_x =bread_board_x;
 //var current_display_y =bread_board_y;
@@ -233,20 +233,10 @@ function writeMessage(canvas, message) {
         
         var mousePos = getMousePos(canvas, evt);
 
-        if (wire_sel===1)
-        {       writeMessage(canvas,'hererear');         
-              wr_pt1=mousePos;
-              wire_sel=2;
-          }
-        if (wire_sel===2)
-        {
-            writeMessage(canvas,'here12');
-              wr_pt2=mousePos;          
-              wire_sel=0;
-              display_wire();
-        }
+        
 
         var pt_close = closestPoint(canvas,mousePos);
+        
         if(short_flag===1)
         {
             elems[no_of_elements-1].start = pt_close.x;
@@ -266,10 +256,21 @@ function writeMessage(canvas, message) {
         cli=check_element(mousePos.x,mousePos.y);
         if(cli!==-1)
         {
+            if (remove_elem===1)
+            {
+               elems.splice(cli,1);
+               no_of_elements=no_of_elements-1;
+               draw_pins();
+               remove_elem=0;
+               cli=-1;
+               
+            }
+            else
+            {
         elems[cli].start=mousePos.x;
         elems[cli].end = mousePos.y;
         writeMessage(canvas,cli);
-
+            }
         }
 
     }

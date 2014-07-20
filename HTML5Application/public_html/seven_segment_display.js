@@ -52,26 +52,124 @@ function set_led_parameters(trigger)
     led_g_x = current_display_x+sev_current_display_width/8;
     led_g_y = current_display_y+sev_current_display_height/8+led_long-led_short;
     
-     context.beginPath();
-     if(trigger[0]===1)
+     //context.beginPath();
+     if(trigger[0]===0)
+     {
+        context.beginPath();
         context.rect(led_a_x, led_a_y,led_long_h, led_short);
-     if(trigger[1]===1)
+        context.fillStyle = 'rgba(66,0,0,0.5)';
+        context.fill();
+        context.closePath();
+     }
+     else if(trigger[0]===1)
+     {
+        context.beginPath();
+        context.rect(led_a_x, led_a_y,led_long_h, led_short);
+        context.fillStyle = '#FF0000';
+        context.fill();
+        context.closePath();
+     }
+     if(trigger[1]===0)
+     {
+         context.beginPath();
         context.rect(led_b_x, led_b_y,led_short, led_long);
-     if(trigger[2]===1)
+        context.fillStyle = 'rgba(66,0,0,0.25)';
+          context.fill();
+        context.closePath();
+        }
+        else if(trigger[1]===1)
+     {
+         context.beginPath();
+        context.rect(led_b_x, led_b_y,led_short, led_long);
+        context.fillStyle = '#FF0000';
+          context.fill();
+        context.closePath();
+        }
+     if(trigger[2]===0)
+     {
+         context.beginPath();
         context.rect(led_c_x, led_c_y,led_short, led_long);
-     if(trigger[3]===1)
+        context.fillStyle = 'rgba(66,0,0,0.25)';
+          context.fill();
+        context.closePath();
+        }
+        else if(trigger[2]===1)
+     {
+         context.beginPath();
+        context.rect(led_c_x, led_c_y,led_short, led_long);
+        context.fillStyle = '#FF0000';
+          context.fill();
+        context.closePath();
+        }
+     if(trigger[3]===0)
+     {
+         context.beginPath();
         context.rect(led_d_x, led_d_y,led_long_h, led_short);
-     if(trigger[4]===1)
+        context.fillStyle = 'rgba(66,0,0,0.25)';
+          context.fill();
+        context.closePath();
+        }
+        else  if(trigger[3]===1)
+     {
+         context.beginPath();
+        context.rect(led_d_x, led_d_y,led_long_h, led_short);
+        context.fillStyle = '#FF0000';
+          context.fill();
+        context.closePath();
+        }
+     if(trigger[4]===0)
+     {
+         context.beginPath();
         context.rect(led_e_x, led_e_y,led_short, led_long);
-     if(trigger[5]===1)
+        context.fillStyle = 'rgba(66,0,0,0.25)';
+          context.fill();
+        context.closePath();
+        }
+     else  if(trigger[4]===1)
+     {
+         context.beginPath();
+        context.rect(led_e_x, led_e_y,led_short, led_long);
+        context.fillStyle = '#FF0000';
+          context.fill();
+        context.closePath();
+        }
+     if(trigger[5]===0)
+     {
+         context.beginPath();
         context.rect(led_f_x, led_f_y,led_short, led_long);
-     if(trigger[6]===1)
+        context.fillStyle = 'rgba(66,0,0,0.25)';
+          context.fill();
+        context.closePath();
+        }
+        else if(trigger[5]===1)
+     {
+         context.beginPath();
+        context.rect(led_f_x, led_f_y,led_short, led_long);
+        context.fillStyle = '#FF0000';
+          context.fill();
+        context.closePath();
+        }
+     if(trigger[6]===0)
+     {
+         context.beginPath();
         context.rect(led_g_x, led_g_y,led_long_h, led_short);
+        context.fillStyle = 'rgba(66,0,0,0.25)';
+          context.fill();
+        context.closePath();
+        }
+         else if(trigger[6]===1)
+     {
+         context.beginPath();
+        context.rect(led_g_x, led_g_y,led_long_h, led_short);
+        context.fillStyle = '#FF0000';
+          context.fill();
+        context.closePath();
+        }
      //if(trigger[7]===1)
        //  context.arc(bread_board_x+offset2+dist_between_slots*(j+4*i)+i*block_dist,bread_board_y+height_offset_1,2, 0, 2 * Math.PI, false);
-    context.fillStyle = 'red';
-    context.fill();
-    context.closePath();
+    //context.fillStyle = 'red';
+    //context.fill();
+    //context.closePath();
 }
 
 function initialise_7segment(display_x,display_y)
@@ -99,7 +197,7 @@ function display_7segment(display_x,display_y)
     context.closePath();
     
 
-    var trigger = [1,1,0,1,1,0,1];
+    var trigger = [0,1,1,0,0,0,0];
     set_led_parameters(trigger);
     
 }

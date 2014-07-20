@@ -10,11 +10,11 @@
  */
 
 
-var no_of_pins=8;
+var ic_no_of_pins=8;
 
 var ic_indic_offset_x=dist_between_slots;
 var ic_indic_offset_y=height_between_slots;
-var ic_current_display_width = no_of_pins*dist_between_slots;
+var ic_current_display_width = ic_no_of_pins*dist_between_slots;
 var ic_current_display_height = 2*offset1;
 var ic_no1;
 // Pin arrangement -- relative display heights
@@ -22,8 +22,8 @@ var ic_no1;
 pin_height_top = ic_current_display_height-height_between_slots;
 pin_height_bottom = ic_current_display_height+height_between_slots;
 
-pin_width_left = (ic_current_display_width-(no_of_pins/2)*dist_between_slots)/2;
-pin_width_right = pin_width_left+no_of_pins*dist_between_slots;
+pin_width_left = (ic_current_display_width-(ic_no_of_pins/2)*dist_between_slots)/2;
+pin_width_right = pin_width_left+ic_no_of_pins*dist_between_slots;
 
 var current_display_x;
 var current_display_y;
@@ -65,7 +65,7 @@ function display_ic(display_x,display_y,ic_no)
 function ic_display_pin_info(display_x,display_y)
 {
     
-    for(var i=0;i<no_of_pins;i++)
+    for(var i=0;i<ic_no_of_pins;i++)
     {
         context.beginPath();
         context.arc(display_x+pin_width_left+dist_between_slots*i,display_y,2, 0, 2 * Math.PI, false);

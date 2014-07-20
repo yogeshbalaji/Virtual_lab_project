@@ -12,12 +12,12 @@ function sub_menu_hold(id)
     var el=document.getElementById(id);
     if (clicked_submenu===0)
     {
-    el.style.visibility="visible"; 
+    el.style.display="block"; 
     clicked_submenu=1;
     }
     else if (clicked_submenu===1)
     {
-    el.style.visibility="hidden"; 
+    el.style.display="none"; 
     clicked_submenu=0;
     }
     
@@ -27,7 +27,7 @@ function sub_menu_close(id)
     
     var el=document.getElementById(id);
     if (clicked_submenu===0)
-    el.style.visibility="hidden"; 
+    el.style.display="none"; 
     
 }
 
