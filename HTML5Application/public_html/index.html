@@ -33,15 +33,16 @@ and open the template in the editor.
                     <dt id="wire-header" onmouseover="ddMenu('wire',1,'wire-header')" onmouseout="ddMenu('wire',-1,'wire-header')" >Select Wire Colour</dt>
                         <dd id="wire-content" onmouseover="cancelHide('wire')" onmouseout="ddMenu('wire',-1,'wire-header')" >
                   <ul id="wire_col_sel">
-                    <li onmousedown="initialise_wire('#ff0000')">Red<br></li>
-                    
+                    <li onmousedown="initialise_short('#FF0000')">Red<br></li>
+                    <li onmousedown="initialise_short('#000000')">Black<br></li>
+                    <li onmousedown="initialise_short('#00FF00')">Green<br></li>
                   </ul>
                        </dd>
                 </dl>
             </div>
         </li>
         <li onmousedown="initialise_resistor(bread_board_x,bread_board_y)">Resistor<br></li>
-        <li onmousedown="initialise_short()">Short wire<br></li>
+        <li onmousedown="initialise_short('#CC0000')">Short wire<br></li>
     </ul>
   </dd>
 </dl>

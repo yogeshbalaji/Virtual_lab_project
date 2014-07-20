@@ -13,18 +13,19 @@ var wire_pt2_x;
 var wire_pt2_y;
 
 
-function initialise_short()
+function initialise_short(col)
 {   
     // here width and height are used as second point 
+    
     short_flag = 1;
-    elems.push({id:no_of_elements+1,type:'short'});
+    elems.push({id:no_of_elements+1,type:'short',wire_col:col});
     no_of_elements=no_of_elements+1;    
         
 }
 
 function display_short(ind)
 {
-    
+    writeMessage(canvas,'here i am toooooo'+elems[ind].wire_col);
     wire_pt1_x = elems[ind].start;
     wire_pt1_y = elems[ind].end;
     wire_pt2_x = elems[ind].width;
@@ -35,7 +36,7 @@ function display_short(ind)
     context.moveTo(wire_pt1_x,wire_pt1_y);
     context.lineTo(wire_pt2_x,wire_pt2_y);
     context.lineWidth = 4;
-    context.strokeStyle = '#CC8239';
+    context.strokeStyle = elems[ind].wire_col;
     context.stroke();
     context.closePath();
         

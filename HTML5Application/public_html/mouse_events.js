@@ -12,6 +12,7 @@ var ic_select_ind = 0;
 var seven_select_ind = 0;
 var short_flag = 0;
 
+
 //var current_display_x =bread_board_x;
 //var current_display_y =bread_board_y;
 function check_overlap(x,y)
@@ -231,7 +232,7 @@ function writeMessage(canvas, message) {
           clicked_flag=1;
         
         var mousePos = getMousePos(canvas, evt);
-<<<<<<< HEAD
+
         if (wire_sel===1)
         {       writeMessage(canvas,'hererear');         
               wr_pt1=mousePos;
@@ -244,15 +245,15 @@ function writeMessage(canvas, message) {
               wire_sel=0;
               display_wire();
         }
-=======
+
         var pt_close = closestPoint(canvas,mousePos);
-        if(short_flag==1)
+        if(short_flag===1)
         {
             elems[no_of_elements-1].start = pt_close.x;
             elems[no_of_elements-1].end = pt_close.y;
             short_flag = 2;
         }
-        else if(short_flag==2)
+        else if(short_flag===2)
         {
             elems[no_of_elements-1].width = pt_close.x;
             elems[no_of_elements-1].height = pt_close.y;
@@ -261,18 +262,18 @@ function writeMessage(canvas, message) {
         }
         else
         {
->>>>>>> 3a612561a238f45befc56dbab16b03a24ec9b4ec
+
         cli=check_element(mousePos.x,mousePos.y);
         if(cli!==-1)
         {
         elems[cli].start=mousePos.x;
         elems[cli].end = mousePos.y;
         writeMessage(canvas,cli);
-<<<<<<< HEAD
+
         }
-=======
+
     }
->>>>>>> 3a612561a238f45befc56dbab16b03a24ec9b4ec
+
         /*
         if(cli!==-1)
         {
@@ -291,7 +292,7 @@ function writeMessage(canvas, message) {
       }, false);
       
       canvas.addEventListener('mousemove', function(evt) {
-          writeMessage(canvas,'Here also'+wire_sel)
+         // writeMessage(canvas,'Here also'+wire_sel)
           if(cli!==-1)
           {
               var mousePos = getMousePos(canvas, evt);
