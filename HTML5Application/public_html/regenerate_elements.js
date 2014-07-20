@@ -38,6 +38,12 @@ function regen()
             
         }
         
+        if(elems[i].type === 'short')
+        {
+            display_short(i);
+            
+        }
+        
 	/*	    
 		    var display_x=elems[i].start;
 		    var display_y=elems[i].end;
