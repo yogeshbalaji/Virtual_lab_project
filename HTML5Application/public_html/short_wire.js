@@ -18,7 +18,7 @@ function initialise_short(col)
     // here width and height are used as second point 
     
     short_flag = 1;
-    elems.push({id:no_of_elements+1,type:'short',wire_col:col});
+    elems.push({id:no_of_elements+1,type:'short',wire_col:col,row:0,col:0,rowtemp:0,coltemp:0});
     no_of_elements=no_of_elements+1;    
         
 }

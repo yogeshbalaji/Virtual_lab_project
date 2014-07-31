@@ -30,7 +30,7 @@ var current_display_y;
 
 function initialise_ic(display_x,display_y,ic_no)
 {
-elems.push({id:no_of_elements+1,type:'ic',start:display_x,end:display_y,height:ic_current_display_height,width:ic_current_display_width,ic_no:ic_no});
+elems.push({id:no_of_elements+1,type:'ic',start:display_x,end:display_y,height:ic_current_display_height,width:ic_current_display_width,ic_no:ic_no,row:0,col:0,rowtemp:0,coltemp:0});
 no_of_elements=no_of_elements+1;    
 display_ic(display_x,display_y,ic_no)    
 }
@@ -91,7 +91,7 @@ function ic_fit_to_slot()
         point.x = bread_board_x+offset2;
     if(point.x>bread_board_x+bread_board_width)
         point.x = bread_board_x+bread_board_width-sev_current_display_width-offset2;
-    point1 = closestPoint(canvas,point);
+    point1 = closestPoint(canvas,point,0);
     
     
     //display_ic(point1.x-pin_width_left,bread_board_y+bread_board_height/2-offset1,ic_no1);
@@ -102,13 +102,20 @@ function ic_fit_to_slot()
         if (check_overlap(point1.x,point1.y)===1)
         {
                 elems[cli].start=bread_board_x;
-    elems[cli].end=bread_board_y;
+                elems[cli].end=bread_board_y;
+                
+                elems[cli].row = 0;
+                elems[cli].col = 0;
     
-    }
+        }
     else
     {
     elems[cli].start=point1.x-pin_width_left;
     elems[cli].end=bread_board_y+bread_board_height/2-offset1;
+    var t = {x:point1.x-pin_width_left,y:bread_board_y+bread_board_height/2-offset1};
+    var ptrc = closestPoint(canvas,t,1);
+    elems[cli].row = ptrc.x;
+    elems[cli].col = ptrc.y;
     }
     
     }

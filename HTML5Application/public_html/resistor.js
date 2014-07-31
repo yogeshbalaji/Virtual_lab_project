@@ -22,7 +22,7 @@ var current_display_yr;
 function initialise_resistor(display_x,display_y)
 {
     //elems.push({id:no_of_elements+1,type:'7seg',start:display_x,end:display_y,no:0,height:sev_current_display_height,width:sev_current_display_width});
-    elems.push({id:no_of_elements+1,type:'resistor',start:display_x,end:display_y,height:resistor_height,width:resistor_width});
+    elems.push({id:no_of_elements+1,type:'resistor',start:display_x,end:display_y,height:resistor_height,width:resistor_width,row:0,col:0,rowtemp:0,coltemp:0});
     no_of_elements=no_of_elements+1;    
     display_resistor(display_x,display_y)    
 }
@@ -83,7 +83,7 @@ function resistor_fit_to_slot()
         point.x = bread_board_x+offset2;
     if(point.x>bread_board_x+bread_board_width)
         point.x = bread_board_x+bread_board_width-sev_current_display_width-offset2;
-    point1 = closestPoint(canvas,point);
+    point1 = closestPoint(canvas,point,0);
     
     
     //display_ic(point1.x-pin_width_left,bread_board_y+bread_board_height/2-offset1,ic_no1);
@@ -93,13 +93,19 @@ function resistor_fit_to_slot()
           if (check_overlap(point1.x,point1.y)===1)
         {
                 elems[cli].start=bread_board_x;
-    elems[cli].end=bread_board_y;
+                elems[cli].end=bread_board_y;
+                
+                elems[cli].row = 0;
+                elems[cli].col = 0;
     
     }
     else
     {
        elems[cli].start=point1.x;
         elems[cli].end=point1.y-resistor_height/2;
+        var ptrc = closestPoint(canvas,{x:point1.x,y:point1.y-resistor_height/2},1);
+        elems[cli].row = ptrc.x;
+        elems[cli].col = ptrc.y;
     }
      
     }

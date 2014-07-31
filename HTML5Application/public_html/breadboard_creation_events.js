@@ -139,7 +139,7 @@
       
 
       
-      function closestPoint(canvas,point)
+      function closestPoint_b(canvas,point)
       {
           //deciding height
           var outx,outy;
@@ -275,7 +275,7 @@
               
               var message = 'Mouse position: ' + closer_index_rows + ',' + point.y;
               writeMessage(canvas, message);
-              outx=closer_index_rows;
+              outx=point.x;
               outy=point.y;
               
           }
@@ -302,7 +302,7 @@
       }
       canvas.addEventListener('mousedown', function(evt) {
         var mousePos = getMousePos(canvas, evt);
-        closestPoint(canvas,mousePos);
+        closestPoint_b(canvas,mousePos);
 
         
         //var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;

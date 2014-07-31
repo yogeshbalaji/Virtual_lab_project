@@ -34,7 +34,7 @@ function check_overlap(x,y)
     
     }
 
-function closestPoint(canvas,point)
+function closestPoint(canvas,point,rc)
       {
           //deciding height
           if((point.x>bread_board_x && point.x<bread_board_x+bread_board_width)&&(point.y>bread_board_y && point.y<bread_board_y+bread_board_height))
@@ -87,6 +87,12 @@ function closestPoint(canvas,point)
               
                   var message = 'Mouse position: ' + point.x + ',' + point.y;
                   writeMessage(canvas, message);
+                  if(rc===1){
+                      return{
+                          x: closer_index_rows,
+                          y: closer_index_cols
+                      };
+                  }
               return {
           x: bread_board_x+offset2+temp_b*parseInt(closer_index_cols/5)+(closer_index_cols%5)*dist_between_slots ,
           y: bread_board_y+height_offset_1+height_between_slots*(closer_index_rows-1)
@@ -135,6 +141,12 @@ function closestPoint(canvas,point)
               
               var message = 'Mouse position: ' + closer_index_rows + ',' + point.y;
               writeMessage(canvas, message);
+              if(rc===1){
+                      return{
+                          x: closer_index_rows,
+                          y: closer_index_cols
+                      };
+                  }
               return {
           x: bread_board_x+offset2+temp_b*parseInt(closer_index_cols/5)+(closer_index_cols%5)*dist_between_slots ,
           y: bread_board_y+5*bread_board_height/6+height_offset_1+height_between_slots*(closer_index_rows-13)
@@ -177,6 +189,13 @@ function closestPoint(canvas,point)
               var message = 'Mouse position: ' + closer_index_rows + ',' + point.y;
               writeMessage(canvas, message);
               
+              if(rc===1){
+                      return{
+                          x: closer_index_rows,
+                          y: closer_index_cols
+                      };
+                  }
+              
               if(closer_index_rows<8)
                 return {
           x: bread_board_x+offset1+dist_between_slots*closer_index_cols ,
@@ -215,6 +234,8 @@ function writeMessage(canvas, message) {
         var got=0;
            for (var i=0;i<no_of_elements;i++)
       {
+        
+              
     if(((point_x>elems[i].start)&&(point_x<elems[i].start + elems[i].width))&&((point_y>elems[i].end)&&(point_y<elems[i].end + elems[i].height)))
     {
         return i;
@@ -235,18 +256,26 @@ function writeMessage(canvas, message) {
 
         
 
-        var pt_close = closestPoint(canvas,mousePos);
+        var pt_close = closestPoint(canvas,mousePos,0);
         
         if(short_flag===1)
         {
             elems[no_of_elements-1].start = pt_close.x;
             elems[no_of_elements-1].end = pt_close.y;
+            var ptrc = closestPoint(canvas,{x:pt_close.x,y:pt_close.y},1);
+            elems[no_of_elements-1].row = ptrc.x;
+            elems[no_of_elements-1].col = ptrc.y;
             short_flag = 2;
+            
+            
         }
         else if(short_flag===2)
         {
             elems[no_of_elements-1].width = pt_close.x;
             elems[no_of_elements-1].height = pt_close.y;
+            var ptrc = closestPoint(canvas,{x:pt_close.x,y:pt_close.y},1);
+            elems[no_of_elements-1].rowtemp = ptrc.x;
+            elems[no_of_elements-1].coltemp = ptrc.y;
             short_flag = 0;
             display_short(no_of_elements-1);
         }

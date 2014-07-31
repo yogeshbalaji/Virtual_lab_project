@@ -5,12 +5,16 @@
  */
 var elems=[];
 
-function elements(id,type,start,end) 
+function elements(id,type,start,end,row,col,rowtemp,coltemp) 
 {
     this.id = id;
     this.type=type;
     this.start=start;
     this.end=end;
+    this.row=row;
+    this.col = col;
+    this.rowtemp=rowtemp;
+    this.coltemp = coltemp;
 }
 
 function regen()
